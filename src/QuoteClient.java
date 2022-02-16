@@ -43,7 +43,7 @@ public class QuoteClient
 		
 		try {
 			/* make connection to server socket */
-			Socket sock = new Socket("127.0.0.1",6013);
+			Socket sock = new Socket("127.0.0.1", 4302);
 			InputStream in = sock.getInputStream();
 			BufferedReader bin = new
 			BufferedReader(new InputStreamReader(in));

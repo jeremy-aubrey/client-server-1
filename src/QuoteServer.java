@@ -39,10 +39,10 @@ public class QuoteServer
 		// Create an object of the main class and use it to call
 		// the non-static developerInfo and other non-static methods
 		QuoteServer server = new QuoteServer();
-//		server.developerInfo();
+		server.developerInfo();
 		
 		try {
-			ServerSocket sock = new ServerSocket(6013);
+			ServerSocket sock = new ServerSocket(4302);
 			/* now listen for connections */
 			while (true) {
 			Socket client = sock.accept();
