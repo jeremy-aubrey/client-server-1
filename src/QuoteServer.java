@@ -15,8 +15,9 @@
 //  Chapter:       Chapter 3
 //
 //  Description:   A server that serves a quote of the day to clients
-//                 upon a successful client connection. Client and server
-//                 communicate via localhost:4302.
+//                 upon a successful client connection. The server communicates 
+//                 to the client by writing to the socket through the PrintWriter. 
+//                 Client and server communicate via localhost:4302.
 //
 //********************************************************************
 

@@ -14,9 +14,9 @@
 //
 //  Chapter:       Chapter 3
 //
-//  Description:   A client that connects to a server and prints the
-//                 server's response to the screen. Client and server
-//                 communicate via localhost:4302.
+//  Description:   A client that connects to a server, reads from the
+//                 socket connection, and prints the data to the screen.
+//                 Client and server communicate via localhost:4302.
 //
 //********************************************************************
 
@@ -50,7 +50,7 @@ public class QuoteClient
 				BufferedReader bin = new
 				BufferedReader(new InputStreamReader(in));
 				
-				// read the date from the socket
+				// read the data (quote of the day) from the socket
 				String line;
 				while ( (line = bin.readLine()) != null)
 				System.out.println(line);
