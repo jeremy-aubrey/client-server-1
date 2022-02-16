@@ -89,7 +89,8 @@ public class QuoteServer
     //
     //  Method:       getRandomQuote (Non Static)
     // 
-    //  Description:  Returns a random element from the array passed in.
+    //  Description:  Returns a random String (quote of the day) from 
+	//                the array passed in.
     //
     //  Parameters:   String[]
     //
@@ -107,7 +108,7 @@ public class QuoteServer
 			int randomIndex = (((int)(Math.random() * 100)) % arr.length);
 			
 			// use index to get element randomly
-			result = arr[randomIndex];
+			result = "Quote of the day:\n" + " ~ " + arr[randomIndex] + " ~ ";
 		} 
 		
 		return result;
