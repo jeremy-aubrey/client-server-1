@@ -15,7 +15,8 @@
 //  Chapter:       Chapter 3
 //
 //  Description:   A server that serves a quote of the day to clients
-//                 upon a successful client connection.
+//                 upon a successful client connection. Client and server
+//                 communicate via localhost:4302.
 //
 //********************************************************************
 
@@ -112,7 +113,7 @@ public class QuoteServer
 		
 	}// end getRandomQuote method
 	
-	//***************************************************************
+    //***************************************************************
     //
     //  Method:       developerInfo (Non Static)
     // 
@@ -131,4 +132,4 @@ public class QuoteServer
 
     } // end developerInfo method
     
-}//end QuoteServer class
+}// end QuoteServer class

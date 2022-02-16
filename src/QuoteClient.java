@@ -14,7 +14,9 @@
 //
 //  Chapter:       Chapter 3
 //
-//  Description:   
+//  Description:   A client that connects to a server and prints the
+//                 server's response to the screen. Client and server
+//                 communicate via localhost:4302.
 //
 //********************************************************************
 
@@ -36,31 +38,35 @@ public class QuoteClient
     //**************************************************************
 	public static void main(String[] args)
 	{
-		// Create an object of the main class and use it to call
+		// create an object of the main class and use it to call
 		// the non-static developerInfo and other non-static methods
 		QuoteClient client = new QuoteClient();
 		client.developerInfo();
 		
 		try {
-			/* make connection to server socket */
-			Socket sock = new Socket("127.0.0.1", 4302);
-			InputStream in = sock.getInputStream();
-			BufferedReader bin = new
-			BufferedReader(new InputStreamReader(in));
-			/* read the date from the socket */
-			String line;
-			while ( (line = bin.readLine()) != null)
-			System.out.println(line);
-			/* close the socket connection*/
-			sock.close();
-			}
-			catch (IOException ioe) {
-			System.err.println(ioe);
+				// make connection to server socket
+				Socket sock = new Socket("127.0.0.1", 4302);
+				InputStream in = sock.getInputStream();
+				BufferedReader bin = new
+				BufferedReader(new InputStreamReader(in));
+				
+				// read the date from the socket
+				String line;
+				while ( (line = bin.readLine()) != null)
+				System.out.println(line);
+				
+				//close the socket connection
+				sock.close();
+				
+			} catch (IOException ioe) {
+				
+				System.err.println(ioe);
+				
 			}
 
-	} // End of the main method
+	} // end main method
 	
-	//***************************************************************
+    //***************************************************************
     //
     //  Method:       developerInfo (Non Static)
     // 
@@ -77,5 +83,6 @@ public class QuoteClient
        System.out.println("Course:  COSC 4302 Operating Systems");
        System.out.println("Program: 2");
 
-    } // End of the developerInfo method
-}
+    } // end developerInfo method
+    
+}// end QuoteClient class
