@@ -36,30 +36,57 @@ public class QuoteServer
     //**************************************************************
 	public static void main(String[] args)
 	{
+		// Quote of the day to be served to clients
+		String[] quotes = {
+				"Buy Low and Sell High",
+				"Eat Your Vegetables",
+				"Good Fences Make Good Neighbors",
+				"Never Underestimate Your Competition",
+				"A Clean Camp is a Happy Camp",
+				"Write tests before writing code",
+				"Do no evil"
+		};
+		
 		// Create an object of the main class and use it to call
 		// the non-static developerInfo and other non-static methods
 		QuoteServer server = new QuoteServer();
 		server.developerInfo();
 		
 		try {
+			
 			ServerSocket sock = new ServerSocket(4302);
-			/* now listen for connections */
-			while (true) {
-			Socket client = sock.accept();
-			PrintWriter pout = new
-			PrintWriter(client.getOutputStream(), true);
-			/* write the Date to the socket */
-			pout.println(new java.util.Date().toString());
-			/* close the socket and resume */
-			/* listening for connections */
-			client.close();
-			}
-			}
-			catch (IOException ioe) {
-			System.err.println(ioe);
+			
+				/* now listen for connections */
+				while (true) {
+				Socket client = sock.accept();
+				PrintWriter pout = new
+				PrintWriter(client.getOutputStream(), true);
+				
+				/* Get a quote randomly using helper method */
+				String randQuote = quotes[server.getRandomIndex(quotes.length)];
+				
+				/* write the quote String to the socket */
+				pout.println(randQuote);
+				
+				/* close the socket and resume */
+				/* listening for connections */
+				client.close();
+				}
+				
+			} catch (IOException ioe) {
+				
+				System.err.println(ioe);
+				
 			}
 		
 	} // End of the main method
+	
+	public int getRandomIndex(int max) {
+		
+		//return a random integer between 0 and max
+		return (((int)(Math.random() * 100)) % max);
+		
+	}
 	
 	//***************************************************************
     //
