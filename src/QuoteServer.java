@@ -47,7 +47,8 @@ public class QuoteServer
 				"Never Underestimate Your Competition",
 				"A Clean Camp is a Happy Camp",
 				"Write tests before writing code",
-				"Do no evil"
+				"Do no evil",
+				"Never take Java online"
 		};
 		
 		// create an object of the main class and use it to call
