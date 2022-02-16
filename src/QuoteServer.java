@@ -14,7 +14,8 @@
 //
 //  Chapter:       Chapter 3
 //
-//  Description:   
+//  Description:   A server that serves a quote of the day to clients
+//                 upon a successful client connection.
 //
 //********************************************************************
 
@@ -36,7 +37,7 @@ public class QuoteServer
     //**************************************************************
 	public static void main(String[] args)
 	{
-		// Quote of the day to be served to clients
+		// quote of the day to be served to clients
 		String[] quotes = {
 				"Buy Low and Sell High",
 				"Eat Your Vegetables",
@@ -47,7 +48,7 @@ public class QuoteServer
 				"Do no evil"
 		};
 		
-		// Create an object of the main class and use it to call
+		// create an object of the main class and use it to call
 		// the non-static developerInfo and other non-static methods
 		QuoteServer server = new QuoteServer();
 		server.developerInfo();
@@ -56,16 +57,16 @@ public class QuoteServer
 			
 				ServerSocket sock = new ServerSocket(4302);
 				
-				// Listen for connections
+				// listen for connections
 				while (true) {
 				Socket client = sock.accept();
 				PrintWriter pout = new
 				PrintWriter(client.getOutputStream(), true);
 				
-				// Get a quote randomly using helper method
+				// get a quote randomly using helper method
 				String randQuote = server.getRandomQuote(quotes);
 				
-				// Write the quote String to the socket
+				// write the quote String to the socket
 				pout.println(randQuote);
 				
 				// close the socket and resume
@@ -95,15 +96,15 @@ public class QuoteServer
     //***************************************************************
 	public String getRandomQuote(String[] arr) {
 		
-		//default return value in case empty array passed
+		// default return value in case empty array passed
 		String result = "";
 		
 		if(arr.length >= 1) {
 			
-			//get a random int (index) between 0 and length of array
+			// get a random int (index) between 0 and length of array
 			int randomIndex = (((int)(Math.random() * 100)) % arr.length);
 			
-			//use index to get element randomly
+			// use index to get element randomly
 			result = arr[randomIndex];
 		} 
 		
