@@ -54,23 +54,24 @@ public class QuoteServer
 		
 		try {
 			
-			ServerSocket sock = new ServerSocket(4302);
-			
-				/* now listen for connections */
+				ServerSocket sock = new ServerSocket(4302);
+				
+				// Listen for connections
 				while (true) {
 				Socket client = sock.accept();
 				PrintWriter pout = new
 				PrintWriter(client.getOutputStream(), true);
 				
-				/* Get a quote randomly using helper method */
-				String randQuote = quotes[server.getRandomIndex(quotes.length)];
+				// Get a quote randomly using helper method
+				String randQuote = server.getRandomQuote(quotes);
 				
-				/* write the quote String to the socket */
+				// Write the quote String to the socket
 				pout.println(randQuote);
 				
-				/* close the socket and resume */
-				/* listening for connections */
+				// close the socket and resume
+				// listening for connections
 				client.close();
+				
 				}
 				
 			} catch (IOException ioe) {
@@ -79,14 +80,36 @@ public class QuoteServer
 				
 			}
 		
-	} // End of the main method
+	}// end main method
 	
-	public int getRandomIndex(int max) {
+    //***************************************************************
+    //
+    //  Method:       getRandomQuote (Non Static)
+    // 
+    //  Description:  Returns a random element from the array passed in.
+    //
+    //  Parameters:   String[]
+    //
+    //  Returns:      String 
+    //
+    //***************************************************************
+	public String getRandomQuote(String[] arr) {
 		
-		//return a random integer between 0 and max
-		return (((int)(Math.random() * 100)) % max);
+		//default return value in case empty array passed
+		String result = "";
 		
-	}
+		if(arr.length >= 1) {
+			
+			//get a random int (index) between 0 and length of array
+			int randomIndex = (((int)(Math.random() * 100)) % arr.length);
+			
+			//use index to get element randomly
+			result = arr[randomIndex];
+		} 
+		
+		return result;
+		
+	}// end getRandomQuote method
 	
 	//***************************************************************
     //
@@ -105,5 +128,6 @@ public class QuoteServer
        System.out.println("Course:  COSC 4302 Operating Systems");
        System.out.println("Program: 2");
 
-    } // End of the developerInfo method
-}
+    } // end developerInfo method
+    
+}//end QuoteServer class
